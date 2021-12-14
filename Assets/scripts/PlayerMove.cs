@@ -9,24 +9,19 @@ public class PlayerMove : MonoBehaviour
     private Vector2 move = Vector2.zero;
     private Rigidbody2D rb;
 
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-
     private void OnEnable()
     {
         Controle.Enable();
     }
-
-
     private void OnDisable()
     {
         Controle.Disable();
     }
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
