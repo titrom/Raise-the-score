@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     public float Spead = 1.0f;
     public InputAction Controle;
 
-
     private Vector2 move = Vector2.zero;
     private Rigidbody2D rb;
-
+    
     private void OnEnable()
     {
         Controle.Enable();
