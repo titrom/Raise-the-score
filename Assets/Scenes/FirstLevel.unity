@@ -511,10 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lose_text: {fileID: 854083900}
   ResetBtn: {fileID: 299377194}
-  buttons:
-  - {fileID: 1456323387}
-  - {fileID: 78906191}
-  - {fileID: 1041909451}
+  DamageBtn: {fileID: 287985251}
 --- !u!114 &168584898
 MonoBehaviour:
   m_ObjectHideFlags: 0

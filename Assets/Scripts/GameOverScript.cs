@@ -9,15 +9,13 @@ public class GameOverScript : MonoBehaviour
 {
     public TMP_Text Lose_text;
     public Button ResetBtn;
-    public List<Button> buttons;
+    public Button DamageBtn;
     public void GameOver()
     {
+
         Lose_text.gameObject.SetActive(true);
         ResetBtn.gameObject.SetActive(true);
-        foreach(var i in buttons)
-        {
-            i.interactable = false;
-        }
+        DamageBtn.gameObject.SetActive(false);
     }
 
     public void OnClickReset()

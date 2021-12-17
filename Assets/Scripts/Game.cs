@@ -21,7 +21,9 @@ public class Game : MonoBehaviour
 
     public List<TMP_Text> TextField;
     public GameObject TextFieldObj;
-    private ProjectDataTask.EGETask _egeTask = ProjectDataTask.Tasks[ProjectDataTask.Rnd.Next(0,3)];
+    private ProjectDataTask.EGETask _egeTask;
+
+    private List<int> _usetTasks = new List<int>();
 
     private Head _head;
     private SpriteEnemy enemyState;
@@ -37,6 +39,19 @@ public class Game : MonoBehaviour
     public void OnTypeHitsSetActive()
     {
         TypeHits.SetActive(true);
+        TypeHits.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = 
+            !ProjectDataTask.Tasks
+            .Where(t => t.Type == TaskType.LogUr)
+            .All(t => _usetTasks.Any(u => u == t.Number));
+        TypeHits.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = 
+            !ProjectDataTask.Tasks
+            .Where(t => t.Type == TaskType.MinUr)
+            .All(t => _usetTasks.Any(u => u == t.Number));
+        TypeHits.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = 
+            !ProjectDataTask.Tasks
+            .Where(t => t.Type == TaskType.LineUr)
+            .All(t => _usetTasks.Any(u => u == t.Number));
+
         HitBtn.gameObject.SetActive(false);
     }
 
@@ -65,7 +80,11 @@ public class Game : MonoBehaviour
     private void UpdateTask(List<TMP_Text> TextFields, TaskType type)
     {
         if (!premer.gameObject.activeSelf) premer.gameObject.SetActive(true);
-        _egeTask = ProjectDataTask.Tasks.Where(t => t.Type == type).ToList()[ProjectDataTask.Rnd.Next(0, 3)];
+        var filTasks = ProjectDataTask.Tasks.Where(t => t.Type == type && !_usetTasks.Any(u => u == t.Number)).ToList();
+        _egeTask = filTasks[ProjectDataTask.Rnd.Next(0, filTasks.Count)];
+
+        _usetTasks.Add(_egeTask.Number);
+
         var mas = GetRandomArray();
         var requsts = new double[3];
         requsts[mas[0]] = GetRandRequst();

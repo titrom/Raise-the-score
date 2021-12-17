@@ -14,7 +14,7 @@ public static class ProjectDataTask
      new EGETask(4, 3, EGETask.TaskType.LogUr),
      new EGETask(5, 10, EGETask.TaskType.LineUr),
      new EGETask(6, 34, EGETask.TaskType.LineUr),
-     new EGETask(7, 34, EGETask.TaskType.MinUr), // 8
+     new EGETask(7, 5, EGETask.TaskType.MinUr), // 8
      new EGETask(8, -3, EGETask.TaskType.MinUr), // 10
      new EGETask(9, 1, EGETask.TaskType.LogUr) // 11
     };
